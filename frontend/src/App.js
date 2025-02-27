@@ -21,12 +21,21 @@ export default function App() {
     abortControllerRef.current = new AbortController();
 
     try {
-      const response = await fetch(
-        `http://localhost:8080/stream?input=${encodeURIComponent(input)}`,
-        {
-          signal: abortControllerRef.current.signal,
-        }
-      );
+      // const response = await fetch(
+      //   `http://localhost:8080/stream?input=${encodeURIComponent(input)}`,
+      //   {
+      //     signal: abortControllerRef.current.signal,
+      //   }
+      // );
+
+      const response = await fetch("http://localhost:8080/stream", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ input }),
+        signal: abortControllerRef.current.signal,
+      });
 
       if (!response.ok) {
         throw new Error("Failed to fetch stream");
