@@ -79,3 +79,22 @@ body {
   background-color: #ccc;
   cursor: not-allowed;
 }
+
+.config-section {
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  gap: 1rem;
+}
+
+.config-input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1;
+}
+
+select.config-input {
+  background-color: white;
+  cursor: pointer;
+}
