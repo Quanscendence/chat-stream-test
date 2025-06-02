@@ -257,3 +257,197 @@ select.config-input {
     width: 100%;
   }
 }
+
+/* Markdown Styles */
+.message.bot .markdown-code-block {
+  background-color: #2d3748;
+  color: #e2e8f0;
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  overflow-x: auto;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.message.bot .markdown-code-block code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+.message.bot .markdown-inline-code {
+  background-color: #e2e8f0;
+  color: #2d3748;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+  font-size: 0.9em;
+}
+
+.message.bot .markdown-blockquote {
+  border-left: 4px solid #007bff;
+  margin: 0.5rem 0;
+  padding: 0.5rem 0 0.5rem 1rem;
+  background-color: #f8f9fa;
+  font-style: italic;
+  color: #495057;
+}
+
+.message.bot .markdown-table-container {
+  overflow-x: auto;
+  margin: 0.5rem 0;
+}
+
+.message.bot .markdown-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.message.bot .markdown-table th,
+.message.bot .markdown-table td {
+  border: 1px solid #dee2e6;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.message.bot .markdown-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+.message.bot .markdown-table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+/* Headers */
+.message.bot h1,
+.message.bot h2,
+.message.bot h3,
+.message.bot h4,
+.message.bot h5,
+.message.bot h6 {
+  margin: 0.8rem 0 0.4rem 0;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.message.bot h1 {
+  font-size: 1.5rem;
+  border-bottom: 2px solid #dee2e6;
+  padding-bottom: 0.3rem;
+}
+
+.message.bot h2 {
+  font-size: 1.3rem;
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 0.2rem;
+}
+
+.message.bot h3 {
+  font-size: 1.1rem;
+}
+
+.message.bot h4,
+.message.bot h5,
+.message.bot h6 {
+  font-size: 1rem;
+}
+
+/* Lists */
+.message.bot ul,
+.message.bot ol {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.message.bot li {
+  margin: 0.2rem 0;
+  line-height: 1.4;
+}
+
+.message.bot ul li {
+  list-style-type: disc;
+}
+
+.message.bot ol li {
+  list-style-type: decimal;
+}
+
+/* Links */
+.message.bot a {
+  color: #007bff;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom-color 0.2s;
+}
+
+.message.bot a:hover {
+  border-bottom-color: #007bff;
+}
+
+/* Paragraphs */
+.message.bot p {
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+
+.message.bot p:first-child {
+  margin-top: 0;
+}
+
+.message.bot p:last-child {
+  margin-bottom: 0;
+}
+
+/* Emphasis */
+.message.bot strong {
+  font-weight: 600;
+}
+
+.message.bot em {
+  font-style: italic;
+}
+
+/* Horizontal rule */
+.message.bot hr {
+  border: none;
+  border-top: 1px solid #dee2e6;
+  margin: 1rem 0;
+}
+
+/* Images */
+.message.bot img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 0.5rem 0;
+}
+
+/* Checkbox lists */
+.message.bot input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+/* Responsive markdown elements */
+@media (max-width: 768px) {
+  .message.bot .markdown-code-block {
+    font-size: 0.8rem;
+    padding: 0.75rem;
+  }
+  
+  .message.bot .markdown-table {
+    font-size: 0.8rem;
+  }
+  
+  .message.bot h1 {
+    font-size: 1.3rem;
+  }
+  
+  .message.bot h2 {
+    font-size: 1.1rem;
+  }
+}

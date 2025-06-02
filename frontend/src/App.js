@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import "./App.css";
 
 export default function App() {
@@ -149,7 +151,7 @@ export default function App() {
 
       try {
         const response = await fetch(
-          `http://localhost:8000/api/v1/via-chatbot/conversations/${conversationId}/messages?stream=true&stream_type=sse`,
+          `https://staging-new-tools.tymeline.app/api/v1/via-chatbot/conversations/${conversationId}/messages?stream=true&stream_type=sse`,
           {
             method: 'POST',
             headers: {
@@ -251,6 +253,53 @@ export default function App() {
     </div>
   );
 
+  // Component to render markdown content
+  const MessageContent = ({ text, isUser }) => {
+    if (isUser) {
+      // User messages display as plain text
+      return <span>{text}</span>;
+    }
+    
+    // Bot messages render as markdown
+    return (
+      <ReactMarkdown 
+        remarkPlugins={[remarkGfm]}
+        components={{
+          // Custom styling for code blocks
+          code: ({node, inline, className, children, ...props}) => {
+            return !inline ? (
+              <pre className="markdown-code-block" {...props}>
+                <code className={className} {...props}>
+                  {children}
+                </code>
+              </pre>
+            ) : (
+              <code className="markdown-inline-code" {...props}>
+                {children}
+              </code>
+            );
+          },
+          // Custom styling for blockquotes
+          blockquote: ({children}) => (
+            <blockquote className="markdown-blockquote">
+              {children}
+            </blockquote>
+          ),
+          // Custom styling for tables
+          table: ({children}) => (
+            <div className="markdown-table-container">
+              <table className="markdown-table">
+                {children}
+              </table>
+            </div>
+          ),
+        }}
+      >
+        {text}
+      </ReactMarkdown>
+    );
+  };
+
   return (
     <div className="App">
       <div className="chat-container">
@@ -300,7 +349,7 @@ export default function App() {
                   key={index}
                   className={`message ${msg.isUser ? "user" : "bot"}`}
                 >
-                  {msg.text}
+                  <MessageContent text={msg.text} isUser={msg.isUser} />
                   {index === messages.length - 1 && !msg.isUser && isTyping && <TypingIndicator />}
                 </div>
               ))}
